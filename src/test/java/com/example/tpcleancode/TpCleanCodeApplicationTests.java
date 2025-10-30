@@ -19,12 +19,20 @@ class TpCleanCodeApplicationTests {
 
     @Test
     void shouldConvertDiceScenarioToPoint() {
-        List<Integer> diceThrowResult = Arrays.asList(1, 1, 1, 2, 2);
+        List<Integer> diceThrowYams = Arrays.asList(1, 1, 1, 1, 1);
+        List<Integer> diceThrowYamsCarre = Arrays.asList(1,1,1,1,2);
+        List<Integer> diceThrowYamsBrelan = Arrays.asList(1,1,1,5,2);
 
         List<List<Integer>>  diceThrowResults = new ArrayList<>();
-        diceThrowResults.add(diceThrowResult);
+        diceThrowResults.add(diceThrowYams);
+        diceThrowResults.add(diceThrowYamsCarre);
+        diceThrowResults.add(diceThrowYamsBrelan);
 
-        assertEquals(28, Service.convertDiceScenarioToPoint(diceThrowResults));
+        assertEquals(50, Service.convertPointForEachDiceScenario(diceThrowYams));
+        assertEquals(35, Service.convertPointForEachDiceScenario(diceThrowYamsCarre));
+        assertEquals(28, Service.convertPointForEachDiceScenario(diceThrowYamsBrelan));
+
+        assertEquals(113, Service.getSumAllDiceThrows(diceThrowResults));
 
     }
 }
