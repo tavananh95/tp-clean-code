@@ -6,6 +6,8 @@ public class Service {
     public static int BRELAN_POINT = 28;
     public static int CARRE_POINT = 35;
     public static int YAMS_POINT = 50;
+    public static int GRAND_SUITE_POINT = 40;
+    public static int FULL_POINT= 30;
 
     public static HashMap<String, Integer> mapScenarioPoint = new HashMap<>();
 
