@@ -1,12 +1,32 @@
 package com.example.tpcleancode;
 
-public class Service {
+import java.util.*;
 
-    public static int convertDiceScenarioToPoint(int dice1, int dice2,
-                                                 int dice3, int dice4, int dice5) {
-        if (dice1 == dice2 && dice2 == dice3) {
-            return 28;
+public class Service {
+    public static int BRELAN_POINT = 28;
+
+    public static int convertDiceScenarioToPoint(List<List<Integer>> diceThrowsResults) {
+        HashMap<Integer, Integer> throwTurnWithPoint = new HashMap<>();
+        int result = 0;
+        for (List<Integer> diceThrowResult : diceThrowsResults) {
+            boolean hasBrelan = false;
+            for (Integer dice : diceThrowResult) {
+                if (countNumberOccurence(diceThrowResult, dice) == (long) 3) {
+                   hasBrelan = true;
+                    break;
+                }
+            }
+
+            if (hasBrelan) {
+                result += BRELAN_POINT;
+            }
         }
-        return 1;
+        return result;
+    }
+
+    public static long countNumberOccurence(List<Integer> numbers, Integer value) {
+        return numbers.stream()
+                .filter(n -> Objects.equals(n, value))
+                .count();
     }
 }
